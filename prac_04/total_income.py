@@ -2,6 +2,7 @@
 CP1404/CP5632 Practical
 Starter code for cumulative total income program
 """
+#commit but don't commit AND push otherwise can't modify or undo existing commits!!!
 
 
 def main():
