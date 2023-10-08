@@ -6,6 +6,7 @@ NUMBER_OF_RANDOM_NUMBERS = 6
 
 
 def main():
+    """Generate a number of quick picks each with six randomised unique numbers"""
     number_of_quick_picks = int(input("How many quick picks? "))
     while number_of_quick_picks < 0:
         print("Please just enter a proper number")
