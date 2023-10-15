@@ -8,12 +8,14 @@ FILENAME = "wimbledon.csv"
 
 
 def main():
+    """Read data from a csv file then print each name, their number of wins and countries"""
     data = retrieve_records(FILENAME)
     championships_to_count, countries = process_records(data)
     display_records(championships_to_count, countries)
 
 
 def retrieve_records(filename):
+    """Append a record for each line in the file"""
     records = []
     with open(filename, "r", encoding="utf-8-sig") as in_file:
         in_file.readline()
@@ -25,6 +27,7 @@ def retrieve_records(filename):
 
 
 def process_records(data):
+    """Create dictionary of winners and set of countries"""
     championships_to_count = {}
     countries = set()
     for datum in data:
@@ -38,6 +41,7 @@ def process_records(data):
 
 
 def display_records(championships_to_count, countries):
+    """Display champions, number of wins and each country"""
     max_name_length = max(len(name) for name in championships_to_count)
     print("Wimbledon Champions: ")
     for name, wins in championships_to_count.items():
