@@ -4,7 +4,6 @@ Estimate: 50 minutes
 Actual:   76 minutes
 """
 
-WIDTH = 10
 string_to_count = {}
 string = input("Text: ")
 words = string.split()
@@ -18,6 +17,7 @@ for word in words:
 words = list(sorted(string_to_count.keys()))
 print(words)
 
+max_length = max(len(word) for word in words)
 
 for word, frequency in string_to_count.items():
-    print(f"{word:{WIDTH}} = {frequency}")
+    print(f"{word:{max_length}} = {frequency}")
