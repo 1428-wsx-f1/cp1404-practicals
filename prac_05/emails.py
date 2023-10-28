@@ -1,5 +1,5 @@
 """
-Word Occurrences
+Emails
 Estimate: 70 minutes
 Actual:   61 minutes
 """
@@ -23,8 +23,8 @@ def main():
 
 def retrieve_name(email):
     """Retrieve the likely name from the email address"""
-    symbol = email.split("@")[0]
-    parts = symbol.split(".")
+    raw_name = email.split("@")[0]
+    parts = raw_name.split(".")
     name = "".join(parts).title()
     return name
 

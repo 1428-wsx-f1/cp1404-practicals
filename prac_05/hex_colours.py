@@ -7,8 +7,7 @@ COLOUR_TO_CODE = {"Absolute Zero": "#0048ba", "Amaranth": "#e52b50", "Amethyst":
 colour = input("Enter a colour: ").title()
 while colour != "":
     try:
-        if colour in COLOUR_TO_CODE:
-            print(colour, "is", COLOUR_TO_CODE[colour])
+        print(colour, "is", COLOUR_TO_CODE[colour])
     except KeyError:
         print("Invalid colour")
     colour = input("Enter a colour: ").title()

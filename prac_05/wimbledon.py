@@ -1,9 +1,10 @@
 """
-Word Occurrences
+Game, Set, Match
 Estimate: 120 minutes
 Actual:   234 minutes
 """
 
+import csv
 FILENAME = "wimbledon.csv"
 
 
@@ -19,9 +20,9 @@ def retrieve_records(filename):
     records = []
     with open(filename, "r", encoding="utf-8-sig") as in_file:
         in_file.readline()
-        for line in in_file:
-            csv_part = line.strip().split(",")
-            records.append(csv_part)
+        reader = csv.reader(in_file, delimiter=",")
+        for record in reader:
+            records.append(record)
 
     return records
 
