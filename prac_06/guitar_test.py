@@ -2,7 +2,7 @@ from prac_06.guitar import Guitar
 
 
 def test():
-    """Function to run tests for get_age() and is_vintage() in Guitar class"""
+    """Function to run tests for get_age() and is_vintage() in Guitar class."""
     guitar_1 = Guitar("Gibson L-5 CES", 1922, 16035.40)
     other_guitar = Guitar("Another Guitar", 2013, 2000)
     print(f"Gibson L-5 CES get_age() - Expected 100. Got {guitar_1.get_age()}")

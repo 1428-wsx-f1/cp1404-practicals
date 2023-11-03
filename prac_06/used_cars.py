@@ -13,7 +13,7 @@ def main():
     my_car.drive(30)
     print(f"{my_car.name} has fuel: {my_car.fuel}")
     print(my_car)
-    limo = Car(100)
+    limo = Car(100, "Limo")
     limo.add_fuel(20)
     print(f"Limo has fuel: {limo.fuel}")
     limo.drive(115)
