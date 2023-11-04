@@ -1,7 +1,7 @@
 """
 Intermediate Exercise, My Guitars
 Estimate: 60 minutes
-Actual:  minutes
+Actual: 72 minutes
 """
 
 from prac_07.guitar import Guitar
@@ -13,14 +13,16 @@ FILENAME = "guitars.csv"
 def main():
     """Read guitar file and save guitars objects to display."""
     print("My Guitars!")
-    guitars = load_guitars(FILENAME)
-    guitars = get_guitars(guitars)
+    guitars = load_guitars()
     guitars.sort()
     for guitar in guitars:
         print(guitar)
+    guitars = get_guitars(guitars)
+    save_guitars(guitars)
 
 
-def load_guitars(file_name):
+def load_guitars():
+    """Load guitars from csv file."""
     guitars = []
     with open(FILENAME, 'r', newline='') as in_file:
         reader = csv.reader(in_file)
@@ -31,6 +33,7 @@ def load_guitars(file_name):
 
 
 def get_guitars(guitars):
+    """Get guitars details from user."""
     name = input("Name: ")
     while name != "":
         year = get_valid_number("Year: ")
@@ -53,6 +56,15 @@ def get_valid_number(prompt):
         print("Enter A Valid Number")
         number = float(input(prompt))
     return number
+
+
+def save_guitars(guitars):
+    with open(FILENAME, 'w', newline='') as out_file:
+        writer = csv.writer(out_file)
+        for guitar in guitars:
+            # Name, Year, Cost
+            writer.writerow((guitar.name, guitar.year, guitar.cost))
+    return guitars
 
 
 main()
