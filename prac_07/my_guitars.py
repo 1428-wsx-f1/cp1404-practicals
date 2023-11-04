@@ -33,13 +33,26 @@ def load_guitars(file_name):
 def get_guitars(guitars):
     name = input("Name: ")
     while name != "":
-        year = int(input("Year: "))
-        cost = int(input("Cost: $"))
+        year = get_valid_number("Year: ")
+        cost = get_valid_number("Cost: $")
         guitar = Guitar(name, int(year), cost)
         guitars.append(guitar)
         print(f"{guitar} added.")
         name = input("Name: ")
     return guitars
+
+
+def get_valid_number(prompt):
+    """Get a valid integer input."""
+    try:
+        number = float(input(prompt))
+        if number <= 0:
+            print("Enter A Number > 0")
+            number = float(input(prompt))
+    except ValueError:
+        print("Enter A Valid Number")
+        number = float(input(prompt))
+    return number
 
 
 main()
