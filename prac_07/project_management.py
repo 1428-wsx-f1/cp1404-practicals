@@ -21,7 +21,7 @@ def main():
         if choice == "L":
             projects = format_data()
         elif choice == "S":
-            pass
+            save_projects(projects)
         elif choice == "D":
             display_projects(projects)
         elif choice == "A":
@@ -59,12 +59,24 @@ def display_projects(projects):
             incomplete_projects.append(project)
     incomplete_projects.sort()
     complete_projects.sort()
-    print(f"Incomplete Projects")
+    print(f"Incomplete Projects:")
     for project in incomplete_projects:
         print(project)
-    print(f"Complete Projects")
+    print(f"Complete Projects:")
     for project in complete_projects:
         print(project)
+
+
+def save_projects(projects):
+    """Save projects to file"""
+    with open(FILENAME, 'w', newline='') as out_file:
+        # Header
+        print("Name", "Start Date", "Priority", "Cost Estimate",
+              "Completion Percentage", sep="\t", file=out_file)
+        for project in projects:
+            print(project.name, project.start_date.strftime("%d/%m/%Y"),
+                  project.priority, project.cost_estimate,
+                  project.completion_percentage, sep="\t", file=out_file)
 
 
 main()
