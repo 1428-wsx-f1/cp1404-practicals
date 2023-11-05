@@ -1,7 +1,7 @@
 """
 Intermediate Exercise, My Guitars
 Estimate: 170 minutes
-Actual: 203 minutes
+Actual: 218 minutes
 """
 
 from prac_07.project import Project
@@ -24,8 +24,10 @@ def main():
             save_projects(projects)
         elif choice == "D":
             display_projects(projects)
+        elif choice == "F":
+            filter_project_by_date(projects)
         elif choice == "A":
-            pass
+            projects = add_project(projects)
         elif choice == "U":
             pass
         else:
@@ -88,6 +90,7 @@ def add_project(projects):
     cost_estimate = get_valid_number("Cost estimate: $")
     completion_percentage = get_valid_number("Percent complete: ")
     projects.append(Project(name, start_date, int(priority), cost_estimate, completion_percentage))
+    return projects
 
 
 def get_valid_number(prompt):
@@ -101,6 +104,15 @@ def get_valid_number(prompt):
         print("Enter A Valid Number")
         number = float(input(prompt))
     return number
+
+
+def filter_project_by_date(projects):
+    """Display projects after user specified date"""
+    date_string = input("Show projects that start after date (dd/mm/yy): ")
+    date = datetime.strptime(date_string, "%d/%m/%Y").date()
+    for project in projects:
+        if project.is_after_date(date):
+            print(project)
 
 
 main()

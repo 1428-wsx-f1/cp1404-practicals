@@ -16,4 +16,9 @@ class Project:
                 f"Estimate ${self.cost_estimate:,.2f}, Completion: {self.completion_percentage}%")
 
     def __lt__(self, other):
+        """Compare priority for sorting."""
         return self.priority < other.priority
+
+    def is_after_date(self, date):
+        """Determine if project is after user specified date."""
+        return self.start_date >= date
