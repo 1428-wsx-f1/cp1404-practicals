@@ -1,7 +1,7 @@
 """
 Intermediate Exercise, My Guitars
 Estimate: 170 minutes
-Actual: 218 minutes
+Actual: 307 minutes
 """
 
 from prac_07.project import Project
@@ -29,7 +29,7 @@ def main():
         elif choice == "A":
             projects = add_project(projects)
         elif choice == "U":
-            pass
+            projects = update_project(projects)
         else:
             print("Invalid Menu Choice")
         print(MENU_STRING)
@@ -93,6 +93,41 @@ def add_project(projects):
     return projects
 
 
+def filter_project_by_date(projects):
+    """Display projects after user specified date"""
+    date_string = input("Show projects that start after date (dd/mm/yy): ")
+    date = datetime.strptime(date_string, "%d/%m/%Y").date()
+    for project in projects:
+        if project.is_after_date(date):
+            print(project)
+
+
+def update_project(projects):
+    """Update percent completion and priority for user specified project"""
+    for index, project in enumerate(projects, 0):
+        print(f"{index:2} {project}")
+
+    is_finished = False
+    while not is_finished:
+        try:
+            choice = get_valid_number("Project Choice: ")
+            print(projects[int(choice)])
+        except IndexError:
+            print("Invalid Choice")
+            choice = int(input("Project Choice: "))
+        else:
+            is_finished = True
+    new_percentage = get_valid_number("New Percentage: ")
+    if new_percentage != "":
+        new_percentage = get_valid_number("New Percentage: ")
+        projects[int(choice)].new_percentage = float(new_percentage)
+    new_priority = get_valid_number("New Priority: ")
+    if new_priority != "":
+        new_priority = get_valid_number("New Priority: ")
+        projects[int(choice)].new_priority = int(new_priority)
+    return projects
+
+
 def get_valid_number(prompt):
     """Get a valid integer input."""
     try:
@@ -104,15 +139,6 @@ def get_valid_number(prompt):
         print("Enter A Valid Number")
         number = float(input(prompt))
     return number
-
-
-def filter_project_by_date(projects):
-    """Display projects after user specified date"""
-    date_string = input("Show projects that start after date (dd/mm/yy): ")
-    date = datetime.strptime(date_string, "%d/%m/%Y").date()
-    for project in projects:
-        if project.is_after_date(date):
-            print(project)
 
 
 main()
