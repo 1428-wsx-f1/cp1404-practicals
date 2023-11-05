@@ -1,7 +1,7 @@
 """
 Intermediate Exercise, My Guitars
 Estimate: 170 minutes
-Actual: 307 minutes
+Actual: 337 minutes
 """
 
 from prac_07.project import Project
@@ -40,7 +40,7 @@ def main():
 def format_data():
     """Read projects from file and create a list"""
     projects = []
-    with open(FILENAME, 'r') as in_file:
+    with open(FILENAME, 'r', encoding="utf-8") as in_file:
         in_file.readline()
         for line in in_file:
             parts = line.strip().split("\t")
@@ -71,7 +71,7 @@ def display_projects(projects):
 
 def save_projects(projects):
     """Save projects to file"""
-    with open(FILENAME, 'w', newline='') as out_file:
+    with open(FILENAME, 'w', newline='', encoding="utf-8") as out_file:
         # Header
         print("Name", "Start Date", "Priority", "Cost Estimate",
               "Completion Percentage", sep="\t", file=out_file)

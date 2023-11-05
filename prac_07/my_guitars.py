@@ -18,13 +18,13 @@ def main():
     for guitar in guitars:
         print(guitar)
     guitars = get_guitars(guitars)
-    save_guitars(guitars)
+    write_guitars(guitars)
 
 
 def load_guitars():
     """Load guitars from csv file."""
     guitars = []
-    with open(FILENAME, 'r', newline='') as in_file:
+    with open(FILENAME, 'r', newline='', encoding="utf-8") as in_file:
         reader = csv.reader(in_file)
         for row in reader:
             # Name, Year, Cost
@@ -58,8 +58,9 @@ def get_valid_number(prompt):
     return number
 
 
-def save_guitars(guitars):
-    with open(FILENAME, 'w', newline='') as out_file:
+def write_guitars(guitars):
+    """Save guitars to csv file."""
+    with open(FILENAME, 'w', newline='', encoding="utf-8") as out_file:
         writer = csv.writer(out_file)
         for guitar in guitars:
             # Name, Year, Cost
