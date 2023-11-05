@@ -79,4 +79,28 @@ def save_projects(projects):
                   project.completion_percentage, sep="\t", file=out_file)
 
 
+def add_project(projects):
+    """Add project to projects list"""
+    name = input("Name: ")
+    date_string = input("Start date (dd/mm/yy): ")
+    start_date = datetime.strptime(date_string, "%d/%m/%Y").date()
+    priority = get_valid_number("Priority: ")
+    cost_estimate = get_valid_number("Cost estimate: $")
+    completion_percentage = get_valid_number("Percent complete: ")
+    projects.append(Project(name, start_date, int(priority), cost_estimate, completion_percentage))
+
+
+def get_valid_number(prompt):
+    """Get a valid integer input."""
+    try:
+        number = float(input(prompt))
+        if number < 0:
+            print("Number Can Not Be Negative")
+            number = float(input(prompt))
+    except ValueError:
+        print("Enter A Valid Number")
+        number = float(input(prompt))
+    return number
+
+
 main()
