@@ -1,5 +1,5 @@
 """
-Walkthrough Excercise, Test Taxi
+Walkthrough Exercise, Test Taxi
 Estimate: 20 minutes
 Actual: 15 minutes
 """
