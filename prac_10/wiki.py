@@ -12,7 +12,7 @@ def main():
     user_input = input("> ")
     while user_input != "":
         try:
-            wikipedia_page = wikipedia.page(user_input)
+            wikipedia_page = wikipedia.page(user_input, auto_suggest=False)
             print(f"{wikipedia_page.title}\n{wikipedia_page.summary}\n{wikipedia_page.url}")
         except wikipedia.exceptions.DisambiguationError:
             print("Disambiguation Error")
